@@ -1,5 +1,7 @@
 String.prototype.toProperCase = function () {
-  return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+  return this.replace(/\w\S*/g, function (txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
 };
 
 var dragContainer = document.querySelector(".drag-container");
@@ -8,7 +10,9 @@ var itemContainers = [].slice.call(
 );
 var columnGrids = [];
 var boardGrid;
-var addTask = document.querySelector("#addTask");
+const addTask = document.querySelector("#addTask");
+const trashDone = document.querySelector(".uil-trash-alt");
+
 const categoryButtonMap = {
   work: "primary",
   personal: "success",
@@ -17,11 +21,11 @@ const categoryButtonMap = {
   goals: "danger",
 };
 // Declaring Grid Item References
-var toDoItems = document.querySelector("#toDoItems");
+const toDoItems = document.querySelector("#toDoItems");
 
-var workingItems = document.querySelector("#workingItems");
+const workingItems = document.querySelector("#workingItems");
 
-var doneItems = document.querySelector("#doneItems");
+const doneItems = document.querySelector("#doneItems");
 
 var toDoGrid = new Muuri(toDoItems, {
   items: ".board-item",
@@ -206,6 +210,12 @@ async function addNewTask() {
   categoryTag.setAttribute("variant", categoryButtonMap[category]);
   categoryTag.textContent = category;
 
+
+  // <i class="uil uil-pen"></i>
+  var editIcon = document.createElement("i");
+  editIcon.className = "uil uil-pen";
+  newTaskElement.appendChild(editIcon);
+
   newContent.textContent = taskName;
   newContent.append(categoryTag);
   newTaskElement.appendChild(newContent);
@@ -251,7 +261,7 @@ function setSingularGrid(gridData, gridIndex, gridInstance) {
 
     const categoryTag = document.createElement("sl-tag");
     categoryTag.className = "categoryTag";
-    categoryTag.setAttribute("variant",categoryButtonMap[tag]);
+    categoryTag.setAttribute("variant", categoryButtonMap[tag]);
     categoryTag.textContent = tag.toProperCase(); // Set the tag's text content
 
     newContent.appendChild(categoryTag); // Append the tag element
@@ -291,8 +301,40 @@ function refreshState() {
   doneGrid.layout();
 }
 
+function trashDoneContent() {
+  Swal.fire({
+    title: "Alert",
+    text: "Are you sure you want to trash all done tasks?",
+    icon: "warning",
+    confirmButtonColor: '#d33',
+    showConfirmButton: true,
+    showCancelButton: true,
+    confirmButtonText:"Trash",
+    cancelButtonText: "Pass",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // Function to execute when "Confirm" button is clicked
+      console.log("trashin");
+      doneGrid.remove(doneGrid.getItems());
+      const doneBoardItems = doneItems.querySelectorAll(".board-item");
+      doneBoardItems.forEach((item) => {
+        doneItems.removeChild(item);
+      });
+      doneGrid.refreshItems().layout();
+      setTimeout(refreshState, 500);
+      saveState();
+    } else if (result.dismiss === Swal.DismissReason.cancel) {
+      // Function to execute when "Cancel" button is clicked
+      console.log("Cancel button clicked");
+    }
+  });
+}
 loadState();
 
 setTimeout(refreshState, 200);
 
+// Event Listeners
+
 addTask.addEventListener("click", addNewTask);
+
+trashDone.addEventListener("click", trashDoneContent);

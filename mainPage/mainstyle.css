@@ -45,6 +45,7 @@ body {
   height: 100%;
 }
 .board-column-header {
+  z-index: 1001;
   position: relative;
   height: 50px;
   line-height: 50px;
@@ -204,9 +205,28 @@ body {
   right: 0;
   margin-right: 1.4rem;
   transition: color 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
 
 }
 .uil-trash-alt:hover{
   color: red;
-
+  transform: scale(1.2);
+}
+.uil-pen{
+  color: #333;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+  transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
+  z-index: 1001;
+}
+.uil-pen:hover{
+  fill: red;
+  color: rgb(238, 255, 0);
+  transform: scale(1.2);
+} 
+.board-item-content:hover + .uil-pen{
+  color: white;
 }
