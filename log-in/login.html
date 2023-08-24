@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <link href="../libs/vivify.css" rel="stylesheet" type="text/css" />
+    <title>Login</title>
+  </head>
+  <body>
+    <div class="main">
+      <h1 class="vivify popInTop">Login</h1>
+      <div>
+        <input
+          class="vivify popInBottom"
+          id="username"
+          placeholder="Username"
+          type="text"
+          required
+        />
+      </div>
+      <div>
+        <input
+          class="vivify popInBottom"
+          id="pass"
+          placeholder="Password"
+          type="password"
+          required
+        />
+      </div>
+      <br />
+      <!-- <button
+        class="vivify unfold duration-1200"
+        id="submit"
+        class="btn btn-primary btn-block btn-large"
+      >
+        Submit
+      </button> -->
+      <sl-button class="vivify spin duration-1200"
+      id="submit"
+      class="btn btn-primary btn-block btn-large"
+      type = "submit" size = "large" variant="primary" id="sl-submit" pill outline>Submit</sl-button>
+    </div>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.7.0/cdn/themes/light.css" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.7.0/cdn/shoelace-autoloader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
+    <script src="login.js" type="module"></script>
+  </body>
+</html>

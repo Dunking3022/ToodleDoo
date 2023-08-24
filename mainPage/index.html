@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- <link rel="stylesheet" href="slicknav.min.css" />
+    <script src="slicknav.min.js"></script> -->
+
+    <link rel="stylesheet" href="mainstyle.css" />
+    <link href="../libs/vivify.css" rel="stylesheet" type="text/css" />
+    <title>ToodleDoo</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        font-family: Helvetica, Arial, sans-serif;
+      }
+      body {
+        margin: 0;
+        padding: 20px 10px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="main">
+      <div class="drag-container"></div>
+      <div class="board">
+        <div class="board-column todo">
+          <div class="board-column-container">
+            <div class="board-column-header vivify popInBottom"> <i class="uil uil-lightbulb-alt"></i>  To-do</div>
+            <div class="board-column-content-wrapper vivify popInBottom">
+              <div class="board-column-content" id = "toDoItems">
+                 <!-- <div class="board-item">
+                  <div class="board-item-content">Item </div>
+                  <sl-tag class = "categoryTag" variant="primary">Primary</sl-tag>
+                </div> -->
+               
+                
+                <!-- TO DO ITEMS CONTENT IN HERE -->
+                <!-- <div class="board-item">
+                  <div class="board-item-content">Item </div>
+                </div>
+                -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="board-column working">
+          <div class="board-column-container">
+            <div class="board-column-header vivify popInBottom"><i class="uil uil-process"></i>  Working</div>
+            <div class="board-column-content-wrapper vivify popInBottom">
+              <div class="board-column-content" id = "workingItems">
+                <!-- DOING CONTENT IN HERE -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="board-column done">
+          <div class="board-column-container">
+            <div class="board-column-header vivify popInBottom"><i class="uil uil-check-circle"></i>  Done <i class="uil uil-trash-alt"></i></div>
+            <div class="board-column-content-wrapper vivify popInBottom">
+              <div class="board-column-content" id = "doneItems">
+                <!-- DONE CONTENT IN HERE -->
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fab-container">
+        <button id = "addTask" class="fab">+</button>
+      </div>
+    </div>
+    <!-- FONT AWESOME CDN -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+
+
+    <!-- SHOELACE CDN  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.7.0/cdn/themes/light.css" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.7.0/cdn/shoelace-autoloader.js"></script>
+    <!-- SWEET ALERT CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
+    <!-- MUURI CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/muuri@0.9.5/dist/muuri.min.js"></script>
+    <!-- WEB ANIMATIONS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/web-animations-js@2.3.2/web-animations.min.js"></script>
+    <!-- UNICORN CDN -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <!-- Main Script JS -->
+    <script src="script.js" type="module"></script>
+
+  </body>
+</html>

@@ -1,0 +1,284 @@
+@import "https://fonts.googleapis.com/css?family=Comfortaa";
+
+html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  font-family: "Comfortaa";
+  background: #092756;
+  background: -moz-radial-gradient(
+      0% 100%,
+      ellipse cover,
+      rgba(104, 128, 138, 0.4) 10%,
+      rgba(138, 114, 76, 0) 40%
+    ),
+    -moz-linear-gradient(top, rgba(57, 173, 219, 0.25) 0%, rgba(42, 60, 87, 0.4)
+          100%),
+    -moz-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+  background: -webkit-radial-gradient(
+      0% 100%,
+      ellipse cover,
+      rgba(104, 128, 138, 0.4) 10%,
+      rgba(138, 114, 76, 0) 40%
+    ),
+    -webkit-linear-gradient(top, rgba(57, 173, 219, 0.25) 0%, rgba(
+            42,
+            60,
+            87,
+            0.4
+          )
+          100%),
+    -webkit-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+  background: -o-radial-gradient(
+      0% 100%,
+      ellipse cover,
+      rgba(104, 128, 138, 0.4) 10%,
+      rgba(138, 114, 76, 0) 40%
+    ),
+    -o-linear-gradient(top, rgba(57, 173, 219, 0.25) 0%, rgba(42, 60, 87, 0.4)
+          100%),
+    -o-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+  background: -ms-radial-gradient(
+      0% 100%,
+      ellipse cover,
+      rgba(104, 128, 138, 0.4) 10%,
+      rgba(138, 114, 76, 0) 40%
+    ),
+    -ms-linear-gradient(top, rgba(57, 173, 219, 0.25) 0%, rgba(42, 60, 87, 0.4)
+          100%),
+    -ms-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+  background: -webkit-radial-gradient(
+      0% 100%,
+      ellipse cover,
+      rgba(104, 128, 138, 0.4) 10%,
+      rgba(138, 114, 76, 0) 40%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(57, 173, 219, 0.25) 0%,
+      rgba(42, 60, 87, 0.4) 100%
+    ),
+    linear-gradient(135deg, #670d10 0%, #092756 100%);
+}
+.main {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+h1 {
+  text-align: center;
+  color: white;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+button {
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  border-radius: 500px;
+  transition-property: background-color, border-color, color, box-shadow, filter;
+  transition-duration: 0.3s;
+  border: 1px solid transparent;
+  letter-spacing: 2px;
+  min-width: 160px;
+  text-transform: uppercase;
+  white-space: normal;
+  font-weight: 700;
+  text-align: center;
+  padding: 16px 14px 18px;
+  color: #616467;
+  box-shadow: inset 0 0 0 2px #616467;
+  background-color: transparent;
+  height: 48px;
+  transition: scale 0.1s ease-in-out;
+  
+}
+
+button:hover {
+  color: #fff;
+  background-color: #616467;
+  scale: 1.02 ;
+}
+
+input {
+  width: 250px;
+  margin-bottom: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  border: none;
+  outline: none;
+  padding: 10px;
+  font-size: 13px;
+  color: #fff;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  box-shadow: inset 0 -5px 45px rgba(100, 100, 100, 0.2),
+    0 1px 1px rgba(255, 255, 255, 0.2);
+  transition: box-shadow 0.5s ease;
+}
+input:focus {
+  box-shadow: inset 0 -5px 45px rgba(100, 100, 100, 0.4),
+    0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+@media screen and (max-width: 360px) {
+  h1 {
+    font-size: 12px !important;
+    line-height: 80%;
+    margin-top: 10px;
+  }
+}
+/* .swal-overlay {
+    background-color: rgba(43, 165, 137, 0.45);
+  } */
+
+/* MUURI CSS */
+
+.drag-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+}
+.board {
+  position: relative;
+}
+.board-column {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 0 10px;
+  width: calc(100% / 3);
+  z-index: 1;
+}
+.board-column.muuri-item-releasing {
+  z-index: 2;
+}
+.board-column.muuri-item-dragging {
+  z-index: 3;
+  cursor: move;
+}
+.board-column-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.board-column-header {
+  position: relative;
+  height: 50px;
+  line-height: 50px;
+  overflow: hidden;
+  padding: 0 20px;
+  text-align: center;
+  background: #333;
+  color: #fff;
+  border-radius: 5px 5px 0 0;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+@media (max-width: 600px) {
+  .board-column-header {
+    text-indent: -1000px;
+  }
+}
+.board-column.todo .board-column-header {
+  background: #4a9ff9;
+}
+.board-column.working .board-column-header {
+  background: #f9944a;
+}
+.board-column.done .board-column-header {
+  background: #2ac06d;
+}
+.board-column-content-wrapper {
+  position: relative;
+  padding: 8px;
+  background: #f0f0f0;
+  height: calc(100vh - 90px);
+  overflow-y: auto;
+  border-radius: 0 0 5px 5px;
+}
+.board-column-content {
+  position: relative;
+  min-height: 100%;
+}
+.board-item {
+  position: absolute;
+  width: calc(100% - 16px);
+  margin: 8px;
+}
+.board-item.muuri-item-releasing {
+  z-index: 9998;
+}
+.board-item.muuri-item-dragging {
+  z-index: 9999;
+  cursor: move;
+}
+.board-item.muuri-item-hidden {
+  z-index: 0;
+}
+.board-item-content {
+  position: relative;
+  padding: 20px;
+  background: #fff;
+  border-radius: 4px;
+  font-size: 17px;
+  cursor: pointer;
+  -webkit-box-shadow: 0px 1px 3px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+sl-button::part(base){
+  font-family:"Comfortaa";
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  border-radius: 500px;
+  transition-property: background-color, border-color, color, box-shadow, filter;
+  transition-duration: 0.3s;
+  border: 1px solid transparent;
+  letter-spacing: 2px;
+  min-width: 160px;
+  text-transform: uppercase;
+  white-space: normal;
+  font-weight: 700;
+  text-align: center;
+  padding: 16px 14px 18px;
+  color: #616467;
+  box-shadow: inset 0 0 0 2px #616467;
+  background-color: transparent;
+  height: 48px;
+  transition: scale 0.1s ease-in-out;
+  
+}
+sl-button::part(base):hover{
+  color: #fff;
+  background-color: #616467;
+  scale: 1.02 ;
+}
+
+@media (max-width: 600px) {
+  .board-item-content {
+    text-align: center;
+  }
+  .board-item-content span {
+    display: none;
+  }
+}
+
+
+
