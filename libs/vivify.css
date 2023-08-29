@@ -64,18 +64,46 @@ THE SOFTWARE.
     animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
     -webkit-animation-duration: 1s;
     animation-duration: 1s; }
+
+    .blinkblue {
+      -webkit-animation-name: blink;
+      animation-name: blinkb;
+      -webkit-animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+      animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+      -webkit-animation-duration: 1s;
+      animation-duration: 1s; }
   
-  @keyframes blink {
-    0% {
-      opacity: 1; }
-    25% {
-      opacity: 0; }
-    50% {
-      opacity: 1; }
-    75% {
-      opacity: 0; }
-    100% {
-      opacity: 1; } }
+      @keyframes blink {
+        0% {
+          color:white;
+          opacity: 1; }
+        25% {
+          color: red;
+          opacity: 0; }
+        50% {
+          color: red;
+          opacity: 1; }
+        75% {
+          opacity: 0; }
+        100% {
+          color:white;
+          opacity: 1; } }
+      @keyframes blinkb {
+        0% {
+          color:white;
+          opacity: 1; }
+        25% {
+          color: rgb(4, 105, 220);
+          opacity: 0; }
+        50% {
+          color: white;
+          opacity: 1; }
+        75% {
+          color: rgb(4, 105, 220);
+          opacity: 0; }
+        100% {
+          color:white;
+          opacity: 1; } }
   .hitLeft {
     -webkit-animation-name: hitLeft;
     animation-name: hitLeft;
@@ -2061,3 +2089,57 @@ THE SOFTWARE.
     animation-duration: 10750ms; }
   
   /*# sourceMappingURL=vivify.css.map */
+  .spinner {
+    animation: spiner 1.5s ease-in-out;
+    display: inline-block;
+  }
+  
+  @keyframes spiner {
+    0% {
+      transform: rotate(0deg);
+    }
+    50%{
+      color: orange;
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .rotate3d {
+    display: inline-block;
+    animation: rotate_3d 1.5s ease-in-out;
+    transform-origin: center center;
+  }
+
+  .rotate3dcircular {
+    display: inline-block;
+    animation: rotate_3d_circular 1.5s ease-in-out;
+    transform-origin: center center;
+  }
+  
+  @keyframes rotate_3d {
+    0% {
+      transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    } 
+    50%{
+      color: green;
+    }
+    100% {
+      transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+    }
+  }
+
+  @keyframes rotate_3d_circular {
+    0% {
+      transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(0.1);
+    }
+    50%{
+      color: blue;
+      transform: rotateX(180deg) rotateY(0deg) rotateZ(180deg) scale(1.0)
+    }
+    100% {
+      transform: rotateX(360deg) rotateY(0deg) rotateZ(360deg) scale(1.0);
+    }
+  }
+  

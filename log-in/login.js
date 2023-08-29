@@ -1,6 +1,6 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.2.0/firebase-app.js'
 import { getAnalytics } from 'https://www.gstatic.com/firebasejs/10.2.0/firebase-analytics.js'
-// Add Firebase products that you want to use
+
 import { collection,getFirestore, doc, setDoc, addDoc, getDoc } from 'https://www.gstatic.com/firebasejs/10.2.0/firebase-firestore.js'
 
 const firebaseConfig = {
@@ -33,6 +33,7 @@ async function submitPassword(){
     }
 
     const credref = doc(db, "UserCredentials",username.value);
+    const dataref = doc(db, "UserData",username.value);
     submitButton.setAttribute("loading","");
     let docSnap;
     try{
@@ -67,9 +68,28 @@ async function submitPassword(){
     } else {
         // const passw = querySnapshot;
         if(docSnap.data().password == password.value){
+          let dataSnap;
+            try{
+              dataSnap = await getDoc(dataref);
+            }
+            catch{
+              Swal.fire('Error!', 'Request Timed Out', 'error');
+            }
+            finally{
+              submitButton.removeAttribute("loading");
+            }
+            let cloudData = "";
+            try{
+            cloudData = dataSnap.data().userData;
+            }
+            catch{
+              console.log("New User Encountered");
+            }
+            localStorage.setItem("gridState",cloudData);
+            console.log("Synced Cloud Data");
             Swal.fire('Success!', 'You are now logged in', 'success');
             localStorage.setItem("currentUser",username.value);
-            setTimeout(function(){window.open("../mainPage/index.html");},2000);
+            setTimeout(function(){window.open("../mainPage/index.html","_self");},2000);
 
         }
         else{

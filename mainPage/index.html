@@ -1,93 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- <link rel="stylesheet" href="slicknav.min.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- <link rel="stylesheet" href="slicknav.min.css" />
     <script src="slicknav.min.js"></script> -->
 
-    <link rel="stylesheet" href="mainstyle.css" />
-    <link href="../libs/vivify.css" rel="stylesheet" type="text/css" />
-    <title>ToodleDoo</title>
-    <style>
-      * {
-        box-sizing: border-box;
-      }
-      html,
-      body {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        font-family: Helvetica, Arial, sans-serif;
-      }
-      body {
-        margin: 0;
-        padding: 20px 10px;
-      }
-    </style>
-  </head>
-  <body>
+  <link rel="stylesheet" href="mainstyle.css" />
+  <link href="../libs/vivify.css" rel="stylesheet" type="text/css" />
+  <title>ToodleDoo</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-    <div class="main">
-      <div class="drag-container"></div>
-      <div class="board">
-        <div class="board-column todo">
-          <div class="board-column-container">
-            <div class="board-column-header vivify popInTop"> <i class="uil uil-lightbulb-alt"></i>  To-do</div>
-            <div class="board-column-content-wrapper vivify popInBottom">
-              <div class="board-column-content" id = "toDoItems">
-                 <!-- <div class="board-item">
+    html,
+    body {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      font-family: Helvetica, Arial, sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class = "navBar vivify">
+    <div class="searchInputWrapper">
+      <input id = "searchTasks" class="searchInput vivify popInLeft" type="text" placeholder='Search task'>
+      <i class="searchInputIcon fa fa-search vivify popInLeft"></i>
+      <i class="searchMicrophoneIcon fa fa-microphone vivify popInLeft"></i>
+      </input>
+      </div>
+
+
+
+      <div class = "sortButtonContainer">
+        <div class="dropdown-selection" style = "margin-left:auto;margin-right:0.2%">
+          <sl-dropdown id = "categoryFilter">
+            <div slot = "trigger" class = "userAv">
+              <i id = "filterEverything" class=" sortButton uil uil-filter"></i>
+          </div>
+            <sl-menu>
+              <sl-menu-item  value="all">All</sl-menu-item>
+              <sl-menu-item value="work">Work</sl-menu-item>
+              <sl-menu-item  value="personal">Personal</sl-menu-item>
+              <sl-menu-item value="health">Health</sl-menu-item>
+              <sl-menu-item value="home">Home</sl-menu-item>
+              <sl-menu-item value="goals">Goals</sl-menu-item>
+            </sl-menu>
+          </sl-dropdown>
+        </div>
+        <i id = "sortEverything" class=" sortButton uil uil-sort-amount-down"></i>
+      </div>
+
+
+      
+      <div class="dropdown-selection">
+        <sl-dropdown>
+          <div slot = "trigger" class = "userAv">
+            <sl-avatar label="User avatar"></sl-avatar>
+            <span id = "UserName">Dunking3022</span>
+            <i style="color:white" class="uil uil-angle-down"></i>
+        </div>
+          <sl-menu>
+            <sl-menu-item id = "logOutButton" value="logout">Log Out</sl-menu-item>
+            <sl-menu-item id = "syncButton" value="sync">Sync</sl-menu-item>
+          </sl-menu>
+        </sl-dropdown>
+      </div>
+
+
+  </div>
+  <div class="main">
+    <div class="drag-container"></div>
+    <div class="board">
+      <div class="board-column todo">
+        <div class="board-column-container">
+          <div class="board-column-header vivify popInTop"> <i class="vivify blink uil uil-lightbulb-alt"></i> To-do <i
+              class="uil uil-plus-circle"></i></div>
+          <div class="board-column-content-wrapper scroll vivify popInBottom">
+            <div class="board-column-content " id="toDoItems">
+
+              <!-- <div class="board-item">
                   <div class="board-item-content">Item </div>
                   <i class="uil uil-pen"></i>
+                  <i class="uil uil-times-circle"></i>
                   <sl-tag class = "categoryTag" variant="primary">Primary</sl-tag>
+                  <sl-format-date class = "taskDate" month="long" day="numeric" year="numeric" date="2020-07-15T09:17:00-04:00"></sl-format-date>
                 </div> -->
-               
-                
-                <!-- TO DO ITEMS CONTENT IN HERE -->
-                <!-- <div class="board-item">
+
+
+              <!-- TO DO ITEMS CONTENT IN HERE -->
+              <!-- <div class="board-item">
                   <div class="board-item-content">Item </div>
                 </div>
                 -->
-              </div>
             </div>
           </div>
         </div>
-        <div class="board-column working">
-          <div class="board-column-container">
-            <div class="board-column-header vivify popInTop"><i class="uil uil-process"></i>  Working</div>
-            <div class="board-column-content-wrapper vivify popInBottom">
-              <div class="board-column-content" id = "workingItems">
-                <!-- DOING CONTENT IN HERE -->
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="board-column done">
-          <div class="board-column-container">
-            <div class="board-column-header vivify popInTop"><i class="uil uil-check-circle"></i>  Done <i class="uil uil-trash-alt"></i></div>
-            <div class="board-column-content-wrapper vivify popInBottom">
-              <div class="board-column-content" id = "doneItems">
-                <!-- DONE CONTENT IN HERE -->
-               
-              </div>
+      </div>  
+      <div class="board-column working">
+        <div class="board-column-container">
+          <div class="board-column-header vivify popInTop"><i class="vivify spinner  uil uil-process"></i> Working</div>
+          <div class="board-column-content-wrapper scroll vivify popInBottom">
+            <div class="board-column-content" id="workingItems">
+              <!-- DOING CONTENT IN HERE -->
             </div>
           </div>
         </div>
       </div>
-      <div class="fab-container">
-        <button id = "addTask" class="fab">+</button>
+
+      <div class="board-column done">
+        <div class="board-column-container">
+          <div class="board-column-header vivify popInTop"><i class="vivify rotate3d uil uil-check-circle"></i> Done <i
+              class="uil uil-trash-alt"></i></div>
+          <div class="board-column-content-wrapper scroll vivify popInBottom">
+            <div class="board-column-content" id="doneItems">
+              <!-- DONE CONTENT IN HERE -->
+
+            </div>
+          </div>
+        </div>
       </div>
+
+      <div class="board-column progressContainer">
+        <div class="board-column-container">
+          <div class="board-column-header bigContainer vivify popInTop"><i
+              class="vivify rotate3d uil uil-check-circle"></i> Progress <i class="uil uil-trash-alt"></i></div>
+          <div class="board-column-content-wrapper-FAKE vivify popInBottom">
+            <div class="board-column-content" id="progressItems">
+              <!-- DONE CONTENT IN HERE -->
+              <div class="progressRing">
+                <sl-progress-ring id="pR" value="50" class = "vivify rotate3dcircular"
+                  style="--track-width: 1.4vh;--size: 15vw;--indicator-color: #4043f4;--track-color: rgba(255, 255, 255, 0.683);">10%</sl-progress-ring>
+              </div>
+              <div class="progressDataContainer">
+                <span class="progressHeading"><i class="vivify blinkblue uil-bolt"></i>Progress</span>
+                <div class="progressCategories">
+                  <ul>
+                    <li class = "tt">
+                      <div class="bottom">Total</div>
+                      <div id="totalTasks" class="alignOnTheRight "></div>
+                    </li>
+                    <li class = "cp">
+                      <div class="bottom">Completed</div>
+                      <div id="completedTasks" class="alignOnTheRight"></div>
+                    </li>
+                    <li class = "ip">
+                      <div class="bottom">Working</div>
+                      <div id="inProgressTasks" class="alignOnTheRight"></div>
+                    </li>
+                    <li class = "wt">
+                      <div class="bottom">Waiting</div>
+                      <div id="waitingTasks" class="alignOnTheRight"></div>
+                    </li>
+                    <li>
+                    </li>
+                  
+                  </ul>
+                  
+                </div>
+                <!-- <sl-button variant="default" size="large"circle>
+                  <sl-icon name="filter-circle" label="Settings"></sl-icon>
+                </sl-button> -->
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
     </div>
+      
+      
+
+    <!-- <button id = "trashEverything">Reset All Boards</button>
+    <button id = "loadEverything">Load All Boards</button>
+    <button id = "sortToDo">Sort ToDo Boards</button> -->
+
     <!-- FONT AWESOME CDN -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
-
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
     <!-- SHOELACE CDN  -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.7.0/cdn/themes/light.css" />
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.7.0/cdn/shoelace-autoloader.js"></script>
+    <script type="module"
+      src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.7.0/cdn/shoelace-autoloader.js"></script>
     <!-- SWEET ALERT CDN -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
     <!-- MUURI CDN -->
@@ -96,8 +201,23 @@
     <script src="https://cdn.jsdelivr.net/npm/web-animations-js@2.3.2/web-animations.min.js"></script>
     <!-- UNICORN CDN -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    
     <!-- Main Script JS -->
     <script src="script.js" type="module"></script>
+    <script src="cloudSync.js" type="module"></script>
 
-  </body>
+    <!-- <script>
+      const container = document.querySelector('.dropdown-selection');
+      const dropdown = container.querySelector('sl-dropdown');
+    
+      dropdown.addEventListener('sl-select', event => {
+        const selectedItem = event.detail.item;
+        console.log(selectedItem.value);
+      });
+    </script> -->
+
+
+
+</body>
+
 </html>
