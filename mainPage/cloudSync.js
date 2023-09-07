@@ -49,10 +49,11 @@
               // Function to execute when "Confirm" button is clicked
                 
               try{
-                await syncDataToCloud;
+                await syncDataToCloud();
                 localStorage.setItem("currentUser","");
-                window.open("../log-in/login.html","_self");
-                console.log('Confirm button clicked');
+                setTimeout(function(){
+                    window.open("../log-in/login.html","_self");
+                console.log('Confirm button clicked');},1500);
             }
               catch{console.log("ERROR ENCOUNTERED");}
               

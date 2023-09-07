@@ -47,10 +47,6 @@ const Toast = Swal.mixin({
 },
 });
 
-
-
-
-
 const categoryButtonMap = {
   work: "primary",
   personal: "success",
@@ -58,6 +54,7 @@ const categoryButtonMap = {
   home: "neutral",
   goals: "danger",
 };
+
 // Declaring Grid Item References
 const toDoItems = document.querySelector("#toDoItems");
 
@@ -331,6 +328,10 @@ async function addNewTask() {
     showCancelButton: true,
   });
 
+  if(category == undefined){
+    return;
+  }
+
   let datepicker;
   const today = new Date().toISOString().slice(0, 10);
 
@@ -347,6 +348,10 @@ async function addNewTask() {
       };
     },  
   });
+
+  if(taskNewDate == undefined){
+    return;
+  }
 
   // document.querySelector("#datetimepicker").value;
   console.log("Value of taskNewDate > "+taskNewDate.tnd);
@@ -580,6 +585,7 @@ async function editTaskContent(event) {
     return;
   }
   taskContent.textContent = taskName;
+  saveState();
 
   const { value: category } = await Swal.fire({
     title: "Category",
@@ -596,6 +602,7 @@ async function editTaskContent(event) {
     showCancelButton: true,
   });
   taskTag.textContent = category.toProperCase();
+  saveState();
 
   let datepicker;
   const today = new Date().toISOString().slice(0, 10);
@@ -728,7 +735,7 @@ document.addEventListener("DOMContentLoaded",function(){
   else{
     Toast.fire({
       icon: "success",
-      title: "Welcome Back\nYou don't have any overdue tasks!!",
+      title: "Look at that!\nYou have 0 overdue tasks!",
     })
   }
   },1500);
