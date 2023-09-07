@@ -716,7 +716,7 @@ document.addEventListener("DOMContentLoaded",function(){
     }).then((result) => {
       if (result.isConfirmed) {
         // Function to execute when "Confirm" button is clicked
-        window.open("../log-in/login.html","_self");
+        window.open("../index.html","_self");
         console.log('Confirm button clicked');
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         // Function to execute when "Cancel" button is clicked
