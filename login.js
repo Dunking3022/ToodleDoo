@@ -57,7 +57,7 @@ async function submitPassword(){
           }).then((result) => {
             if (result.isConfirmed) {
               // Function to execute when "Confirm" button is clicked
-              window.open("../sign-up/signup.html","_self");
+              window.open("sign-up/signup.html","_self");
               console.log('Confirm button clicked');
             } else if (result.dismiss === Swal.DismissReason.cancel) {
               // Function to execute when "Cancel" button is clicked
@@ -89,7 +89,7 @@ async function submitPassword(){
             console.log("Synced Cloud Data");
             Swal.fire('Success!', 'You are now logged in', 'success');
             localStorage.setItem("currentUser",username.value);
-            setTimeout(function(){window.open("../mainPage/index.html","_self");},2000);
+            setTimeout(function(){window.open("mainPage/index.html","_self");},2000);
 
         }
         else{

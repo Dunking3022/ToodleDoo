@@ -50,7 +50,7 @@ async function submitPassword(){
         })
 
         Swal.fire('Success!', 'Succesfully Registered! Redirecting to login page', 'success');
-        setTimeout(function(){window.open("../log-in/login.html","_self");},1500);
+        setTimeout(function(){window.open("../index.html","_self");},1500);
         }
     }
 

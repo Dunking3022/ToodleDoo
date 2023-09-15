@@ -52,7 +52,7 @@
                 await syncDataToCloud();
                 localStorage.setItem("currentUser","");
                 setTimeout(function(){
-                    window.open("../log-in/login.html","_self");
+                    window.open("../index.html","_self");
                 console.log('Confirm button clicked');},1500);
             }
               catch{console.log("ERROR ENCOUNTERED");}
